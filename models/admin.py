@@ -8,6 +8,8 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ("Role", "CreatedAt")
     search_fields = ("TgName", "Name", "PhoneNumber")
     readonly_fields = ("Id", "CreatedAt", "UpdatedAt")
+    ordering = ("Id",)
+
     fieldsets = (
         ("User Information", {"fields": ("Id", "TgId", "TgName", "Name", "PhoneNumber")}),
         ("Activity", {"fields": ("TaskCount", "Role")}),
@@ -27,6 +29,8 @@ class TaskAdmin(admin.ModelAdmin):
     list_filter = ("IsReassigned", "RequestDate", "StartDate", "EndDate")
     search_fields = ("Company", "Author", "Worker", "Message")
     readonly_fields = ("Id", "CreatedAt", "UpdatedAt")
+    ordering = ("Id",)
+
     fieldsets = (
         ("Task Details", {"fields": ("Id", "Company", "Message")}),
         ("People", {"fields": ("Author", "AuthorId", "Worker", "WorkerId")}),
@@ -49,6 +53,8 @@ class TaskReassignAdmin(admin.ModelAdmin):
     list_filter = ("IsDone", "StartDate", "EndDate")
     search_fields = ("Appointer", "Executor")
     readonly_fields = ("Id", "CreatedAt", "UpdatedAt")
+    ordering = ("Id",)
+
     fieldsets = (
         ("Assignment Details", {"fields": ("Id", "TaskId")}),
         ("People", {"fields": ("Appointer", "AppointerId", "Executor", "ExecutorId")}),
