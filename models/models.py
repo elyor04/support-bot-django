@@ -63,7 +63,7 @@ class TaskReassign(models.Model):
     Appointer = models.TextField(null=True, blank=True)
     Executor = models.TextField(null=True, blank=True)
 
-    Hours = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    Hours = models.FloatField(null=True, blank=True)
 
     StartDate = models.DateTimeField(null=True, blank=True)
     EndDate = models.DateTimeField(null=True, blank=True)
