@@ -1,4 +1,6 @@
 staticfiles/
+media/
+
 __pycache__/
 .venv/
 
