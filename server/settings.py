@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'postgresql': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'support_bot',
         'USER': 'elyor',
@@ -86,7 +86,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     },
-    'dafault': {
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR.parent / 'customers-support-bot' / 'data' / 'sqlite.db',
     },

@@ -8,12 +8,17 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "server.settings")
 django.setup()
 
 # Define source and destination database aliases
-SQLITE_DB = "default"
-POSTGRES_DB = "postgresql"
+SQLITE_DB = "sqlite"
+POSTGRES_DB = "default"
 
 
 def migrate_all_data():
-    models = apps.get_models()
+    models = [
+        "models.User",
+        "models.Task",
+        "models.TaskReassign",
+    ]
+    models = [apps.get_model(model) for model in models]
 
     for model in models:
         if not model._meta.managed:
