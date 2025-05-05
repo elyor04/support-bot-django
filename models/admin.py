@@ -16,12 +16,6 @@ class UserAdmin(admin.ModelAdmin):
         ("Timestamps", {"fields": ("CreatedAt", "UpdatedAt"), "classes": ("collapse",)}),
     )
 
-    def has_add_permission(self, *args, **kwargs):
-        return False
-
-    def has_change_permission(self, *args, **kwargs):
-        return False
-
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
@@ -40,12 +34,6 @@ class TaskAdmin(admin.ModelAdmin):
         ("Timestamps", {"fields": ("CreatedAt", "UpdatedAt"), "classes": ("collapse",)}),
     )
 
-    def has_add_permission(self, *args, **kwargs):
-        return False
-
-    def has_change_permission(self, *args, **kwargs):
-        return False
-
 
 @admin.register(TaskReassign)
 class TaskReassignAdmin(admin.ModelAdmin):
@@ -61,9 +49,3 @@ class TaskReassignAdmin(admin.ModelAdmin):
         ("Work Details", {"fields": ("Hours", "StartDate", "EndDate", "IsDone")}),
         ("Timestamps", {"fields": ("CreatedAt", "UpdatedAt"), "classes": ("collapse",)}),
     )
-
-    def has_add_permission(self, *args, **kwargs):
-        return False
-
-    def has_change_permission(self, *args, **kwargs):
-        return False
