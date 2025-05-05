@@ -19,7 +19,7 @@ class User(models.Model):
     class Meta:
         db_table = "Users"
 
-    def __repr__(self):
+    def __str__(self):
         return f"User(Id={self.Id}, TgName='{self.TgName}')"
 
 
@@ -52,7 +52,7 @@ class Task(models.Model):
     class Meta:
         db_table = "Tasks"
 
-    def __repr__(self):
+    def __str__(self):
         return f"Task(Id={self.Id}, Company='{self.Company}')"
 
 
@@ -79,5 +79,5 @@ class TaskReassign(models.Model):
     class Meta:
         db_table = "TaskReassigns"
 
-    def __repr__(self):
+    def __str__(self):
         return f"TaskReassign(Id={self.Id}, TaskId={self.TaskId})"
