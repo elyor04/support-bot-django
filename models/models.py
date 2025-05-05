@@ -1,5 +1,20 @@
 from django.db import models
 
+USER_ROLES = [
+    ("Consultant", "Consultant"),
+    ("Developer", "Developer"),
+    ("Admin", "Admin"),
+]
+
+YES_NO = [
+    ("Yes", "Yes"),
+    ("No", "No"),
+]
+
+CONFIRMATION = [
+    ("Done", "Done"),
+]
+
 
 class User(models.Model):
     Id = models.BigAutoField(primary_key=True)
@@ -11,7 +26,7 @@ class User(models.Model):
     Name = models.CharField(max_length=200, null=True, blank=True)
 
     TaskCount = models.IntegerField(default=0, null=True, blank=True)
-    Role = models.CharField(max_length=50, null=True, blank=True)
+    Role = models.CharField(max_length=50, null=True, blank=True, choices=USER_ROLES)
 
     CreatedAt = models.DateTimeField(auto_now_add=True)
     UpdatedAt = models.DateTimeField(auto_now=True)
@@ -37,8 +52,8 @@ class Task(models.Model):
     StartDate = models.DateTimeField(null=True, blank=True)
     EndDate = models.DateTimeField(null=True, blank=True)
 
-    IsReassigned = models.CharField(max_length=10, null=True, blank=True)
-    Confirmation = models.CharField(max_length=10, null=True, blank=True)
+    IsReassigned = models.CharField(max_length=10, null=True, blank=True, choices=YES_NO)
+    Confirmation = models.CharField(max_length=10, null=True, blank=True, choices=CONFIRMATION)
 
     GroupId = models.BigIntegerField(null=True, blank=True)
     MessageId = models.BigIntegerField(null=True, blank=True)
@@ -68,7 +83,7 @@ class TaskReassign(models.Model):
     StartDate = models.DateTimeField(null=True, blank=True)
     EndDate = models.DateTimeField(null=True, blank=True)
 
-    IsDone = models.CharField(max_length=10, null=True, blank=True)
+    IsDone = models.CharField(max_length=10, null=True, blank=True, choices=YES_NO)
 
     AppointerId = models.BigIntegerField(null=True, blank=True)
     ExecutorId = models.BigIntegerField(null=True, blank=True)
