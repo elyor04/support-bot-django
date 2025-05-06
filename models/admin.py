@@ -20,8 +20,8 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     list_display = ("Id", "Company", "Author", "Worker", "RequestDate", "StartDate", "EndDate", "Confirmation")
-    list_filter = ("Confirmation", "RequestDate", "StartDate", "EndDate")
-    search_fields = ("Id", "Company", "Author", "Worker", "Message")
+    list_filter = ("Worker", "Confirmation", "RequestDate", "StartDate", "EndDate")
+    search_fields = ("Id", "Company", "Author", "Worker")
     readonly_fields = ("Id", "CreatedAt", "UpdatedAt")
     ordering = ("Id",)
 
@@ -39,7 +39,7 @@ class TaskAdmin(admin.ModelAdmin):
 class TaskReassignAdmin(admin.ModelAdmin):
     list_display = ("Id", "TaskId", "Appointer", "Executor", "Hours", "StartDate", "EndDate", "IsDone")
     list_filter = ("IsDone", "StartDate", "EndDate")
-    search_fields = ("Id", "Appointer", "Executor")
+    search_fields = ("Id", "TaskId", "Appointer", "Executor")
     readonly_fields = ("Id", "CreatedAt", "UpdatedAt")
     ordering = ("Id",)
 
