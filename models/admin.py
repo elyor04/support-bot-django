@@ -1,4 +1,5 @@
 from django.contrib import admin
+from import_export.admin import ExportActionMixin
 from .models import User, Task, TaskReassign
 
 
@@ -18,7 +19,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 @admin.register(Task)
-class TaskAdmin(admin.ModelAdmin):
+class TaskAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ("Id", "Company", "Author", "Worker", "RequestDate", "StartDate", "EndDate", "Confirmation")
     list_filter = ("Worker", "Confirmation", "RequestDate", "StartDate", "EndDate")
     search_fields = ("Id", "Company", "Author", "Worker")
@@ -36,7 +37,7 @@ class TaskAdmin(admin.ModelAdmin):
 
 
 @admin.register(TaskReassign)
-class TaskReassignAdmin(admin.ModelAdmin):
+class TaskReassignAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ("Id", "TaskId", "Appointer", "Executor", "Hours", "StartDate", "EndDate", "IsDone")
     list_filter = ("IsDone", "StartDate", "EndDate")
     search_fields = ("Id", "TaskId", "Appointer", "Executor")
