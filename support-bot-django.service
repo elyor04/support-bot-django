@@ -1,0 +1,14 @@
+[Unit]
+Description=Django Admin Service
+After=network.target
+
+[Service]
+User=elyor
+WorkingDirectory=/home/elyor/apps/support-bot-django
+ExecStart=/home/elyor/apps/support-bot-django/.venv/bin/gunicorn server.wsgi:application --bind 0.0.0.0:8018 --workers 4
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
